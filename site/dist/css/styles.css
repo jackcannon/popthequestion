@@ -1,0 +1,305 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #111111;
+}
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+#title-card {
+  position: absolute;
+  top: -140px;
+  left: 50%;
+  width: 200px;
+  height: 100px;
+  margin-left: -100px;
+  background-image: linear-gradient(45deg, #ca7994 25%, #bb5577 25%, #bb5577 50%, #ca7994 50%, #ca7994 75%, #bb5577 75%, #bb5577 0);
+  background-position: auto auto;
+  background-origin: padding-box;
+  background-clip: border-box;
+  background-size: 50px 50px;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  box-shadow: 5px 3px 15px 8px rgba(0, 0, 0, 0.75);
+  cursor: default;
+  font-size: 35px;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  padding: 7px 3px 0 3px;
+  color: black;
+  transform: rotate(6deg);
+  z-index: 1000;
+  transition: top 2s cubic-bezier(0.39, 0.58, 0.57, 1), transform 2s cubic-bezier(0.39, 0.58, 0.57, 1);
+}
+#title-card:before {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  width: 3px;
+  height: 100px;
+  margin: -80px 11px 0 11px;
+  background-color: #ffffff;
+  transform: rotate(-6deg);
+  z-index: -1;
+  border-radius: 5px;
+  transition: transform 2s cubic-bezier(0.39, 0.58, 0.57, 1);
+  left: 0;
+}
+#title-card:after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  width: 3px;
+  height: 100px;
+  margin: -80px 11px 0 11px;
+  background-color: #ffffff;
+  transform: rotate(-6deg);
+  z-index: -1;
+  border-radius: 5px;
+  transition: transform 2s cubic-bezier(0.39, 0.58, 0.57, 1);
+  right: 0;
+}
+#title-card.shown {
+  top: 30px;
+  transform: rotate(-2deg);
+}
+#title-card.shown:before,
+#title-card.shown:after {
+  transform: rotate(2deg);
+}
+#confetti-box {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 200;
+}
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.container #game {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 63px;
+  right: 63px;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.balloon {
+  position: absolute;
+  display: table;
+  top: -100px;
+  left: 0;
+  width: 126px;
+  height: 180px;
+  background-color: #FF4136;
+  color: rgba(17, 17, 17, 0.85);
+  margin: -180px -63px 0 -63px;
+  padding: 0 6px 20px 6px;
+  border-radius: 80% 80% 80% 80% / 60% 60% 100% 100%;
+  box-shadow: -5px -5px 10px 10px rgba(0, 0, 0, 0.3) inset, -10px -10px 20px 20px rgba(0, 0, 0, 0.3) inset;
+  z-index: 100;
+  transform-origin: 35% 50%;
+  text-align: center;
+  font-weight: bold;
+  user-select: none;
+  cursor: pointer;
+  animation: wobble 3s infinite ease-in-out, rise 5s infinite linear;
+}
+.balloon > span {
+  display: table-cell;
+  vertical-align: middle;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+.balloon.balloon-red {
+  background-color: #FF4136;
+}
+.balloon.balloon-red:before {
+  border-bottom: 8px solid #d93229;
+}
+.balloon.balloon-green {
+  background-color: #2ECC40;
+}
+.balloon.balloon-green:before {
+  border-bottom: 8px solid #42854a;
+}
+.balloon.balloon-blue {
+  background-color: #0074D9;
+}
+.balloon.balloon-blue:before {
+  border-bottom: 8px solid #19578d;
+}
+.balloon.balloon-purple {
+  background-color: #B10DC9;
+}
+.balloon.balloon-purple:before {
+  border-bottom: 8px solid #752281;
+}
+.balloon.balloon-orange {
+  background-color: #FF851B;
+}
+.balloon.balloon-orange:before {
+  border-bottom: 8px solid #c46e23;
+}
+.balloon.popped {
+  display: none;
+}
+.balloon.correct {
+  z-index: 300;
+}
+.balloon:before {
+  content: '';
+  position: absolute;
+  top: 180px;
+  left: 63px;
+  width: 8px;
+  height: 0px;
+  margin: -1px -7px;
+  border-bottom: 8px solid #FF4136;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  z-index: -5;
+}
+.particle {
+  opacity: 0;
+  position: absolute;
+  width: 5px;
+  height: 10px;
+  margin-top: -5px;
+  margin-left: -2.5px;
+  z-index: -50;
+}
+.particle.particle-ani-1 {
+  animation: confetti-1 1.5s linear 1;
+}
+.particle.particle-ani-2 {
+  animation: confetti-2 1.5s linear 1;
+}
+.particle.particle-ani-3 {
+  animation: confetti-3 1.5s linear 1;
+}
+.particle.particle-ani-4 {
+  animation: confetti-4 1.5s linear 1;
+}
+.particle.particle-red {
+  background-color: rgba(235, 83, 74, 0.9);
+}
+.particle.particle-green {
+  background-color: rgba(71, 179, 83, 0.9);
+}
+.particle.particle-blue {
+  background-color: rgba(22, 114, 195, 0.9);
+}
+.particle.particle-purple {
+  background-color: rgba(161, 34, 180, 0.9);
+}
+.particle.particle-orange {
+  background-color: rgba(232, 135, 50, 0.9);
+}
+.text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+#caption {
+  top: calc(40vh - 20px);
+  font-size: 16px;
+  cursor: default;
+}
+#answer {
+  top: 40vh;
+  font-size: 42px;
+  cursor: default;
+}
+@keyframes wobble {
+  50% {
+    transform: translateX(10px) rotate(-6deg);
+  }
+  0%,
+  100% {
+    transform: translateX(-10px) rotate(6deg);
+  }
+}
+@keyframes rise {
+  0% {
+    top: calc(100% + 200px);
+  }
+  100% {
+    top: -10px;
+  }
+}
+@keyframes confetti-1 {
+  0% {
+    opacity: 1;
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-20px, 150px) rotate(600deg);
+  }
+}
+@keyframes confetti-2 {
+  0% {
+    opacity: 1;
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(30px, 150px) rotate(700deg);
+  }
+}
+@keyframes confetti-3 {
+  0% {
+    opacity: 1;
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-25px, 150px) rotate(-800deg);
+  }
+}
+@keyframes confetti-4 {
+  0% {
+    opacity: 1;
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(10px, 150px) rotate(-500deg);
+  }
+}
