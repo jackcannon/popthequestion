@@ -1,3 +1,15 @@
+const jq = {
+    addClass: function(el, className) {
+        el.classList.add(className);
+    },
+    removeClass: function(el, className) {
+        el.classList.remove(className);
+    },
+    hasClass: function(el, className) {
+        el.classList.contains(className);
+    }
+};
+
 const rand = (frm = 0, to = 0) => Math.floor(Math.random() * Math.abs(to - frm)) + Math.min(frm, to);
 
 const idGen = {
@@ -19,6 +31,7 @@ const idGen = {
 };
 
 export {
+    jq,
     idGen,
     rand
 };

@@ -1,4 +1,4 @@
 export default {
-	game: document.getElementById('game'),
-	confetti: document.getElementById('confetti-box')
+    game: document.getElementById('game'),
+    confetti: document.getElementById('confetti-box')
 };

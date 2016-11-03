@@ -1,111 +1,111 @@
 html, body {
-	margin: 0;
-	padding: 0;
-	font-family: 'Poppins', sans-serif;
-	background-color: #111111;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #111111;
 }
 
 * {
-	box-sizing: border-box;
-	user-select: none;
+    box-sizing: border-box;
+    user-select: none;
 }
 
 @signCurve: cubic-bezier(0.39, 0.58, 0.57, 1);
 
 .title-pseudo() {
-	content: '';
-	position: absolute;
-	display: block;
-	top: 0;
-	width: 3px;
-	height: 100px;
-	margin: -80px 11px 0 11px;
-	background-color: #ffffff;
-	transform: rotate(-6deg);
-	z-index: -1;
-	border-radius: 5px;
-	transition: transform 2s @signCurve;
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    width: 3px;
+    height: 100px;
+    margin: -80px 11px 0 11px;
+    background-color: #ffffff;
+    transform: rotate(-6deg);
+    z-index: -1;
+    border-radius: 5px;
+    transition: transform 2s @signCurve;
 }
 
 #title-card {
-	@w: 200px;
-	@h: 100px;
-	@light: lighten(#552233, 40%);
-	@dark: lighten(#552233, 30%);
-	position: absolute;
-	top: -140px;
-	left: 50%;
-	width: @w;
-	height: @h;
-	margin-left: -(@w / 2);
-	background-image: linear-gradient(45deg, @light 25%, @dark 25%, @dark 50%, @light 50%, @light 75%, @dark 75%, @dark 0);
-	background-position: auto auto;
+    @w: 200px;
+    @h: 100px;
+    @light: lighten(#552233, 40%);
+    @dark: lighten(#552233, 30%);
+    position: absolute;
+    top: -140px;
+    left: 50%;
+    width: @w;
+    height: @h;
+    margin-left: -(@w / 2);
+    background-image: linear-gradient(45deg, @light 25%, @dark 25%, @dark 50%, @light 50%, @light 75%, @dark 75%, @dark 0);
+    background-position: auto auto;
 
-	background-origin: padding-box;
-	background-clip: border-box;
-	background-size: 50px 50px;
-	border: 2px solid rgba(0, 0, 0, 0.5);
-	border-radius: 20px;
-	box-shadow: 5px 3px 15px 8px rgba(0, 0, 0, 0.75);
-	cursor: default;
-	font-size: 35px;
-	font-weight: bold;
-	line-height: 40px;
-	text-align: center;
-	padding: 7px 3px 0 3px;
-	color: black;
-	transform: rotate(6deg);
-	z-index: 1000;
-	transition: top 2s @signCurve, transform 2s @signCurve;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-size: 50px 50px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    box-shadow: 5px 3px 15px 8px rgba(0, 0, 0, 0.75);
+    cursor: default;
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: center;
+    padding: 7px 3px 0 3px;
+    color: black;
+    transform: rotate(6deg);
+    z-index: 1000;
+    transition: top 2s @signCurve, transform 2s @signCurve;
 
-	&:before {
-		.title-pseudo();
-		left: 0;
-	}
-	&:after {
-		.title-pseudo();
-		right: 0;
-	}
+    &:before {
+        .title-pseudo();
+        left: 0;
+    }
+    &:after {
+        .title-pseudo();
+        right: 0;
+    }
 
-	&.shown {
-		top: 30px;
-		transform: rotate(-2deg);
-		&:before, &:after { transform: rotate(2deg); }
-	}
+    &.shown {
+        top: 30px;
+        transform: rotate(-2deg);
+        &:before, &:after { transform: rotate(2deg); }
+    }
 }
 
 #confetti-box {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
 }
 
 .container {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	max-width: 100vw;
-	max-height: 100vh;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 
-	#game {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 63px;
-		right: 63px;
-		max-width: 100vw;
-		max-height: 100vh;
-		margin: 0;
-		padding: 0;
-	}
+    #game {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 63px;
+        right: 63px;
+        max-width: 100vw;
+        max-height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
 }
 
 @red: #FF4136;
@@ -117,166 +117,166 @@ html, body {
 @easing: cubic-bezier(0.38, 0.11, 0.63, 0.86);
 
 .balloon {
-	@w: 126px;
-	@h: 180px;
-	@sh: rgba(0, 0, 0, 0.3);
-	@all: 80%;
-	@wide: 100%;
-	@narr: 60%;
-	position: absolute;
-	display: table;
-	top: -100px;
-	left: 0;
-	width: @w;
-	height: @h;
-	background-color: @red;
-	color: rgba(17, 17, 17, 0.85);
-	margin: -@h -(@w / 2) 0 -(@w / 2);
-	padding: 0 6px 20px 6px;
-	border-radius: ~"@{all} @{all} @{all} @{all} / @{narr} @{narr} @{wide} @{wide}";
-	box-shadow: -5px -5px 10px 10px @sh inset, -10px -10px 20px 20px @sh inset;
-	z-index: 100;
-	transform-origin: 35% 50%;
-	text-align: center;
-	font-weight: bold;
-	user-select: none;
-	cursor: pointer;
-	animation: wobble 3s infinite ease-in-out, rise 5s infinite linear;
+    @w: 126px;
+    @h: 180px;
+    @sh: rgba(0, 0, 0, 0.3);
+    @all: 80%;
+    @wide: 100%;
+    @narr: 60%;
+    position: absolute;
+    display: table;
+    top: -100px;
+    left: 0;
+    width: @w;
+    height: @h;
+    background-color: @red;
+    color: rgba(17, 17, 17, 0.85);
+    margin: -@h -(@w / 2) 0 -(@w / 2);
+    padding: 0 6px 20px 6px;
+    border-radius: ~"@{all} @{all} @{all} @{all} / @{narr} @{narr} @{wide} @{wide}";
+    box-shadow: -5px -5px 10px 10px @sh inset, -10px -10px 20px 20px @sh inset;
+    z-index: 100;
+    transform-origin: 35% 50%;
+    text-align: center;
+    font-weight: bold;
+    user-select: none;
+    cursor: pointer;
+    animation: wobble 3s infinite ease-in-out, rise 5s infinite linear;
 
-	> span {
-		display: table-cell;
-		vertical-align: middle;
-		word-break: break-word;
-		word-wrap: break-word;
-	}
+    > span {
+        display: table-cell;
+        vertical-align: middle;
+        word-break: break-word;
+        word-wrap: break-word;
+    }
 
-	.color(@col) {
-		background-color: @col;
-		&:before {
-			border-bottom: 8px solid darken(desaturate(@col, 30%), 10%);
-		}
-	}
-	&.balloon-red { .color(@red); }
-	&.balloon-green { .color(@green); }
-	&.balloon-blue { .color(@blue); }
-	&.balloon-purple { .color(@purple); }
-	&.balloon-orange { .color(@orange); }
+    .color(@col) {
+        background-color: @col;
+        &:before {
+            border-bottom: 8px solid darken(desaturate(@col, 30%), 10%);
+        }
+    }
+    &.balloon-red { .color(@red); }
+    &.balloon-green { .color(@green); }
+    &.balloon-blue { .color(@blue); }
+    &.balloon-purple { .color(@purple); }
+    &.balloon-orange { .color(@orange); }
 
-	&.popped { display: none; }
+    &.popped { display: none; }
 
-	&:before {
-		content: '';
-		position: absolute;
-		top: @h;
-		left: @w / 2;
-		width: 8px;
-		height: 0px;
-		margin: -1px -7px;
-		border-bottom: 8px solid @red;
-		border-left: 3px solid transparent;
-		border-right: 3px solid transparent;
-		z-index: -5;
-	}
+    &:before {
+        content: '';
+        position: absolute;
+        top: @h;
+        left: @w / 2;
+        width: 8px;
+        height: 0px;
+        margin: -1px -7px;
+        border-bottom: 8px solid @red;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        z-index: -5;
+    }
 }
 .particle {
-	@w: 5px;
-	@h: 10px;
-	opacity: 0;
-	position: absolute;
-	width: @w;
-	height: @h;
-	margin-top: -(@h / 2);
-	margin-left: -(@w / 2);
-	z-index: -50;
+    @w: 5px;
+    @h: 10px;
+    opacity: 0;
+    position: absolute;
+    width: @w;
+    height: @h;
+    margin-top: -(@h / 2);
+    margin-left: -(@w / 2);
+    z-index: -50;
 
-	&.particle-ani-1 { animation: confetti-1 1.5s linear 1; }
-	&.particle-ani-2 { animation: confetti-2 1.5s linear 1; }
-	&.particle-ani-3 { animation: confetti-3 1.5s linear 1; }
-	&.particle-ani-4 { animation: confetti-4 1.5s linear 1; }
+    &.particle-ani-1 { animation: confetti-1 1.5s linear 1; }
+    &.particle-ani-2 { animation: confetti-2 1.5s linear 1; }
+    &.particle-ani-3 { animation: confetti-3 1.5s linear 1; }
+    &.particle-ani-4 { animation: confetti-4 1.5s linear 1; }
 
-	&.particle-red { background-color: fade(desaturate(@red, 20%), 90%); }
-	&.particle-green { background-color: fade(desaturate(@green, 20%), 90%); }
-	&.particle-blue { background-color: fade(desaturate(@blue, 20%), 90%); }
-	&.particle-purple { background-color: fade(desaturate(@purple, 20%), 90%); }
-	&.particle-orange { background-color: fade(desaturate(@orange, 20%), 90%); }
+    &.particle-red { background-color: fade(desaturate(@red, 20%), 90%); }
+    &.particle-green { background-color: fade(desaturate(@green, 20%), 90%); }
+    &.particle-blue { background-color: fade(desaturate(@blue, 20%), 90%); }
+    &.particle-purple { background-color: fade(desaturate(@purple, 20%), 90%); }
+    &.particle-orange { background-color: fade(desaturate(@orange, 20%), 90%); }
 }
 
 .text {
-	position: absolute;
-	left: 0;
-	right: 0;
-	color: rgba(255, 255, 255, 0.3);
-	text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
 }
 
 #caption {
-	top: ~"calc(40vh - 20px)";
-	font-size: 16px;
-	cursor: default;
+    top: ~"calc(40vh - 20px)";
+    font-size: 16px;
+    cursor: default;
 }
 #answer {
-	top: 40vh;
-	font-size: 42px;
-	cursor: default;
+    top: 40vh;
+    font-size: 42px;
+    cursor: default;
 }
 
 @keyframes wobble {
-	50% { transform: translateX(10px) rotate(-6deg); }
-	0%, 100% { transform: translateX(-10px) rotate(6deg); }
+    50% { transform: translateX(10px) rotate(-6deg); }
+    0%, 100% { transform: translateX(-10px) rotate(6deg); }
 }
 @keyframes rise {
-	0%   { top: ~"calc(100% + 200px)"; }
-	100% { top: -10px; }
+    0%   { top: ~"calc(100% + 200px)"; }
+    100% { top: -10px; }
 }
 @keyframes confetti-1 {
-	0% {
-		opacity: 1;
-		transform: translate(0px, 0px) rotate(0deg);
-	}
-	75% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		transform: translate(-20px, 150px) rotate(600deg);
-	}
+    0% {
+        opacity: 1;
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-20px, 150px) rotate(600deg);
+    }
 }
 @keyframes confetti-2 {
-	0% {
-		opacity: 1;
-		transform: translate(0px, 0px) rotate(0deg);
-	}
-	75% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		transform: translate(30px, 150px) rotate(700deg);
-	}
+    0% {
+        opacity: 1;
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(30px, 150px) rotate(700deg);
+    }
 }
 @keyframes confetti-3 {
-	0% {
-		opacity: 1;
-		transform: translate(0px, 0px) rotate(0deg);
-	}
-	75% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		transform: translate(-25px, 150px) rotate(-800deg);
-	}
+    0% {
+        opacity: 1;
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-25px, 150px) rotate(-800deg);
+    }
 }
 @keyframes confetti-4 {
-	0% {
-		opacity: 1;
-		transform: translate(0px, 0px) rotate(0deg);
-	}
-	75% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		transform: translate(10px, 150px) rotate(-500deg);
-	}
+    0% {
+        opacity: 1;
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(10px, 150px) rotate(-500deg);
+    }
 }
