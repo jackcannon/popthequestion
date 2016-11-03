@@ -19,7 +19,7 @@ class Balloon {
         this.game = game;
     }
     isCorrect() {
-        return this.question === questions.current.questions[0];
+        return questions.current && this.question === questions.current.questions[0];
     }
     pop() {
         if (this.isCorrect()) {

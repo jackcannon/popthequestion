@@ -25,6 +25,7 @@ const game = {
                 balloon.question = questions.current.questions[index];
                 balloon.updateView();
             });
+            // update answer
         }
     }
 };
