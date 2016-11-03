@@ -1,0 +1,11 @@
+{
+  "name": "netflixandchill",
+  "version": "0.0.0",
+  "dependencies": {
+    "json3": "^3.3.0",
+    "es5-shim": "^4.0.0",
+    "jquery": "~2.1.4"
+  },
+  "devDependencies": {},
+  "appPath": "app"
+}
