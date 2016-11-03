@@ -1,10 +1,10 @@
-import Coor from './Coor.js';
 import { jq, idGen, rand } from './utils.js';
 import questions from './questions.js';
 import confetti from './confetti.js';
 
 class Balloon {
     constructor() {
+        this.game = null;
         this.id = idGen.create();
         this.question = '';
         this.x = rand(10000) / 100;
@@ -15,19 +15,19 @@ class Balloon {
         this.confetti = null;
         this.popped = false;
     }
+    setGameReference(game) {
+        this.game = game;
+    }
+    isCorrect() {
+        return this.question === questions.current.questions[0];
+    }
     pop() {
-        if (this.question === questions.current.questions[0]) {
+        if (this.isCorrect()) {
+            confetti.addBurst(this);
             let el = this.getElement();
-            let bound = el.getBoundingClientRect();
-            let centre = new Coor(bound.left, bound.top);
-            // move me to confetti manager
-            let html = '';
-            new Array(50).fill(1).forEach(() => {
-                html += confetti.generateHTML(centre);
-            });
-            this.getConfettiElement().innerHTML = html;
             jq.addClass(el, 'popped');
             this.popped = true;
+            this.game.nextQuestion();
         }
     }
     getElement() {
@@ -51,7 +51,12 @@ class Balloon {
         return `<div id="confetti-${this.id}"></div>`;
     }
     updateView() {
-        this.getElement().querySelector('span')[0].innerText = this.question;
+        let el = this.getElement();
+        jq.removeClass(el, 'correct');
+        if (this.isCorrect()) {
+            jq.addClass(el, 'correct');
+        }
+        el.querySelector('span').innerText = this.question;
     }
 }
 

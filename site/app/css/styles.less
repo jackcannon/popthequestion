@@ -81,6 +81,7 @@ html, body {
     left: 0;
     right: 0;
     overflow: hidden;
+    z-index: 200;
 }
 
 .container {
@@ -162,7 +163,8 @@ html, body {
     &.balloon-purple { .color(@purple); }
     &.balloon-orange { .color(@orange); }
 
-    &.popped { display: none; }
+    &.popped  { display: none; }
+    &.correct { z-index: 300; }
 
     &:before {
         content: '';

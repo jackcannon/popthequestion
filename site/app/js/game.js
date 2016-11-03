@@ -7,17 +7,25 @@ const game = {
     placeBalloons: function() {
         let html = '';
         let conf = '';
-        this.balloons.forEach((ball, index) => {
-            ball.question = questions.current.questions[index];
-            html += ball.generateHTML();
-            conf += ball.generateConfettiHTML();
+        this.balloons.forEach((balloon) => {
+            html += balloon.generateHTML();
+            conf += balloon.generateConfettiHTML();
         });
         elements.game.innerHTML = html;
         elements.confetti.innerHTML = conf;
 
-        game.balloons.forEach(balloon => {
+        this.balloons.forEach(balloon => {
+            balloon.setGameReference(game);
             balloon.getElement().addEventListener('click', () => balloon.pop());
         });
+    },
+    nextQuestion: function() {
+        if (questions.nextQuestion()) {
+            this.balloons.filter(balloon => !balloon.popped).reverse().forEach((balloon, index) => {
+                balloon.question = questions.current.questions[index];
+                balloon.updateView();
+            });
+        }
     }
 };
 

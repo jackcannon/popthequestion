@@ -1,7 +1,14 @@
 import { rand } from './utils.js';
 import Coor from './Coor.js';
 
-export default {
+const confetti = {
+    addBurst: (balloon) => {
+        let bound = balloon.getElement().getBoundingClientRect();
+        let centre = new Coor(bound.left, bound.top);
+        balloon.getConfettiElement().innerHTML = new Array(50).fill(1).map(() => {
+            return confetti.generateHTML(centre);
+        }).join('');
+    },
     generateHTML: (centre) => {
         let dir = rand(1, 4); // direction
         let color = ['red', 'green', 'blue', 'purple', 'orange'][rand(5)];
@@ -13,3 +20,5 @@ export default {
         return `<span class="${clss}" style="${styl}"></span>`;
     }
 };
+
+export default confetti;
