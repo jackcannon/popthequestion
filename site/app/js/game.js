@@ -1,6 +1,7 @@
 import elements from './elements.js';
 import questions from './questions.js';
 import Balloon from './Balloon.js';
+import { jq } from './utils.js';
 
 const game = {
     balloons: new Array(10).fill(1).map(() => new Balloon()),
@@ -25,7 +26,9 @@ const game = {
                 balloon.question = questions.current.questions[index];
                 balloon.updateView();
             });
-            // update answer
+            elements.caption.style.opacity = '1';
+            jq.changeText(elements.answer, questions.current.answer);
+        } else {
         }
     }
 };

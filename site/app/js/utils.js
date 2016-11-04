@@ -7,6 +7,15 @@ const jq = {
     },
     hasClass: function(el, className) {
         el.classList.contains(className);
+    },
+    changeText: function(el, newText) {
+        let action = () => {
+            el.removeEventListener('transitionend', action);
+            el.innerHTML = newText;
+            el.style.opacity = '1';
+        };
+        el.style.opacity = '0';
+        el.addEventListener('transitionend', action);
     }
 };
 

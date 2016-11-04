@@ -9,7 +9,7 @@ class Balloon {
         this.question = '';
         this.x = rand(10000) / 100;
         this.delay = rand(8000);
-        this.durations = [rand(3500, 5000), rand(5000, 10000)];
+        this.durations = [rand(3500, 5000), rand(4000, 12000)];
         this.color = ['red', 'green', 'blue', 'purple', 'orange'][rand(5)];
         this.element = null;
         this.confetti = null;
@@ -56,7 +56,10 @@ class Balloon {
         if (this.isCorrect()) {
             jq.addClass(el, 'correct');
         }
-        el.querySelector('span').innerText = this.question;
+        let span = el.querySelector('span');
+        if (span.innerHTML !== this.question) {
+            jq.changeText(span, this.question);
+        }
     }
 }
 

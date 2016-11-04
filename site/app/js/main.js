@@ -1,8 +1,11 @@
 import game from './game.js';
-// import { jq } from './utils.js';
+import elements from './elements.js';
 
-// game.placeBalloons();
-// game.nextQuestion();
+game.placeBalloons();
+elements.startBtn.addEventListener('click', () => {
+    game.nextQuestion();
+    elements.welcome.style.display = 'none';
+});
 
 // setTimeout(function() {
 // jq.addClass(document.getElementById('title-card'), 'shown');
