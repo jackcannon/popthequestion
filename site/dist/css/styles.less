@@ -10,6 +10,13 @@ html, body {
     user-select: none;
 }
 
+
+@red: #FF4136;
+@green: #2ECC40;
+@blue: #0074D9;
+@purple: #B10DC9;
+@orange: #FF851B;
+
 @signCurve: cubic-bezier(0.39, 0.58, 0.57, 1);
 
 .title-pseudo() {
@@ -17,7 +24,7 @@ html, body {
     position: absolute;
     display: block;
     top: 0;
-    width: 3px;
+    width: 6px;
     height: 100px;
     margin: -80px 11px 0 11px;
     background-color: #ffffff;
@@ -30,8 +37,8 @@ html, body {
 #title-card {
     @w: 200px;
     @h: 100px;
-    @light: lighten(#552233, 40%);
-    @dark: lighten(#552233, 30%);
+    @light: darken(#B10DC9, 0%);
+    @dark: darken(#B10DC9, 10%);
     position: absolute;
     top: -140px;
     left: 50%;
@@ -44,7 +51,7 @@ html, body {
     background-origin: padding-box;
     background-clip: border-box;
     background-size: 50px 50px;
-    border: 2px solid rgba(0, 0, 0, 0.5);
+    // border: 2px solid rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     box-shadow: 5px 3px 15px 8px rgba(0, 0, 0, 0.75);
     cursor: default;
@@ -53,24 +60,88 @@ html, body {
     line-height: 40px;
     text-align: center;
     padding: 7px 3px 0 3px;
-    color: black;
+    color: rgba(255, 255, 255, 0.8);
+    transform-origin: 3px 100%;
     transform: rotate(6deg);
     z-index: 1000;
     transition: top 2s @signCurve, transform 2s @signCurve;
 
-    &:before {
-        .title-pseudo();
-        left: 0;
-    }
-    &:after {
-        .title-pseudo();
-        right: 0;
-    }
+    // &:before {
+    //     .title-pseudo();
+    //     left: 0;
+    // }
+    // &:after {
+    //     .title-pseudo();
+    //     right: 0;
+    // }
 
     &.shown {
         top: 30px;
-        transform: rotate(-2deg);
-        &:before, &:after { transform: rotate(2deg); }
+        transform: rotate(-4deg);
+        // &:before, &:after { transform: rotate(4deg); }
+    }
+}
+
+#welcome {
+    @w: 400px;
+    @h: 300px;
+    position: absolute;
+    width: @w;
+    top: 45%;
+    left: 50%;
+    margin-top: -(@h / 2);
+    margin-left: -(@w / 2);
+    padding: 15px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    background-color: darken(@purple, 33%);
+    box-shadow: 2px 2px 0 0 darken(@purple, 35%),
+                4px 4px 0 0 darken(@purple, 35%),
+                6px 6px 0 0 darken(@purple, 35%),
+                8px 8px 0 0 darken(@purple, 35%),
+                10px 10px 0 0 darken(@purple, 35%);
+    opacity: 0.95;
+    z-index: 500;
+
+    > h1, > h2, > p {
+        margin: 0;
+        line-height: 1.2em;
+    }
+    >h1 {
+        font-family: 'Lobster Two', cursive;
+        font-size: 38px;
+    }
+    > h2 {
+        font-size: 20px;
+    }
+    > p {
+        margin: 15px 0;
+    }
+
+    button {
+        font-family: 'Lobster Two', cursive;
+        font-size: 26px;
+        background-color: lighten(#111111, 10%);
+        color: white;
+        border-radius: 5px;
+        border: none;
+        margin: 2px 2px 7px 2px;
+        padding: 8px 15px;
+        outline-color: @blue;
+        max-width: 100%;
+        box-shadow: 0 5px 0 0 lighten(#111111, 5%);
+        cursor: pointer;
+        margin: 2px 2px 7px 2px;
+        background-color: darken(@purple, 15%);
+        box-shadow: 0 5px 0 0 darken(@purple, 25%);
+        transition: box-shadow 0.15s, margin 0.15s;
+        outline: none;
+
+        &:hover {
+            box-shadow: 0 2px 0 0 darken(@purple, 25%);
+            margin: 5px 2px 4px 2px;
+        }
     }
 }
 
@@ -109,12 +180,6 @@ html, body {
     }
 }
 
-@red: #FF4136;
-@green: #2ECC40;
-@blue: #0074D9;
-@purple: #B10DC9;
-@orange: #FF851B;
-
 @easing: cubic-bezier(0.38, 0.11, 0.63, 0.86);
 
 .balloon {
@@ -149,6 +214,8 @@ html, body {
         vertical-align: middle;
         word-break: break-word;
         word-wrap: break-word;
+        opacity: 1;
+        transition: opacity 0.5s;
     }
 
     .color(@col) {
@@ -215,11 +282,14 @@ html, body {
     top: ~"calc(40vh - 20px)";
     font-size: 16px;
     cursor: default;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 #answer {
     top: 40vh;
     font-size: 42px;
     cursor: default;
+    transition: opacity 0.5s;
 }
 
 @keyframes wobble {
