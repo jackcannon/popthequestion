@@ -229,7 +229,7 @@ html, body {
     &.balloon-orange { .color(@orange); }
 
     &.popped  { display: none; }
-    &.correct { z-index: 300; }
+    &.correct, &.finale { z-index: 300; }
 
     &:before {
         content: '';
@@ -288,6 +288,70 @@ html, body {
     font-size: 42px;
     cursor: default;
     transition: opacity 0.5s;
+}
+
+.celebration-img {
+    border-radius: 20px;
+    position: absolute;
+    opacity: 0;
+    top: 150%;
+    left: 50%;
+    transition: opacity 0.75s, top 1.5s;
+
+    &.show {
+        opacity: 1;
+    }
+
+    .offset(@w, @h, @scale) {
+        width: @w * @scale * 1px;
+        height: @h * @scale * 1px;
+        margin-top: -((@h * @scale) / 2) * 1px;
+        margin-left: -((@w * @scale) / 2) * 1px;
+    }
+
+    @min: 20%;
+    @max: 80%;
+
+    &#cele-bear {
+        .offset(480, 270, 1);
+        animation: cele-shake-1 linear 0.4s infinite;
+        &.show {
+            top: 50%;
+            left: 50%;
+        }
+    }
+    &#cele-diddy {
+        .offset(371, 209, 0.9);
+        animation: cele-shake-2 linear 0.45s infinite;
+        &.show {
+            top: @min;
+            left: @min;
+        }
+    }
+    &#cele-giroud {
+        .offset(500, 240, 0.7);
+        animation: cele-shake-3 linear 0.5s infinite;
+        &.show {
+            top: @min;
+            left: @max;
+        }
+    }
+    &#cele-elmo {
+        .offset(480, 270, 0.7);
+        animation: cele-shake-3 linear 0.55s infinite;
+        &.show {
+            top: @max;
+            left: @min;
+        }
+    }
+    &#cele-gorilla {
+        .offset(282, 176, 1);
+        animation: cele-shake-2 linear 0.6s infinite;
+        &.show {
+            top: @max;
+            left: @max;
+        }
+    }
 }
 
 @keyframes wobble {
@@ -349,4 +413,18 @@ html, body {
         opacity: 0;
         transform: translate(10px, 150px) rotate(-500deg);
     }
+}
+
+@shakeAmount: 1.5deg;
+@keyframes cele-shake-1 {
+    0%, 100% { transform: rotate(0deg - @shakeAmount); }
+    50%      { transform: rotate(0deg + @shakeAmount); }
+}
+@keyframes cele-shake-2 {
+    0%, 100% { transform: rotate(5deg - @shakeAmount); }
+    50%      { transform: rotate(5deg + @shakeAmount); }
+}
+@keyframes cele-shake-3 {
+    0%, 100% { transform: rotate(-5deg - @shakeAmount); }
+    50%      { transform: rotate(-5deg + @shakeAmount); }
 }
