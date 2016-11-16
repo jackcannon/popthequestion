@@ -30,7 +30,7 @@ const game = {
             jq.changeText(elements.answer, questions.current.answer);
         } else {
             elements.caption.style.opacity = '0';
-            elements.answer.style.opacity = '0';
+            jq.changeText(elements.answer, 'Something');
             jq.changeText(elements.titleCard, '<h1 class="title"><span><span class="capital">P</span>op</span> <span>the</span> <span><span class="capital">Q</span>uestion!</span></h1>');
 
         }
