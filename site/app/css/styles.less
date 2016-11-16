@@ -35,55 +35,53 @@ html, body {
 }
 
 #title-card {
-    @w: 200px;
+    @w: 500px;
     @h: 100px;
     @light: darken(#B10DC9, 0%);
     @dark: darken(#B10DC9, 10%);
     position: absolute;
-    top: -140px;
+    top: 0px;
     left: 50%;
     width: @w;
     height: @h;
     margin-left: -(@w / 2);
-    background-image: linear-gradient(45deg, @light 25%, @dark 25%, @dark 50%, @light 50%, @light 75%, @dark 75%, @dark 0);
-    background-position: auto auto;
-
-    background-origin: padding-box;
-    background-clip: border-box;
-    background-size: 50px 50px;
-    // border: 2px solid rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-    box-shadow: 5px 3px 15px 8px rgba(0, 0, 0, 0.75);
-    cursor: default;
-    font-size: 35px;
-    font-weight: bold;
-    line-height: 40px;
     text-align: center;
-    padding: 7px 3px 0 3px;
-    color: rgba(255, 255, 255, 0.8);
-    transform-origin: 3px 100%;
-    transform: rotate(6deg);
-    z-index: 1000;
-    transition: top 2s @signCurve, transform 2s @signCurve;
+    opacity: 0;
+    transition: opacity 0.75s;
 
-    // &:before {
-    //     .title-pseudo();
-    //     left: 0;
-    // }
-    // &:after {
-    //     .title-pseudo();
-    //     right: 0;
-    // }
+    &.show {
+        opacity: 1;
+    }
+}
 
-    &.shown {
-        top: 30px;
-        transform: rotate(-4deg);
-        // &:before, &:after { transform: rotate(4deg); }
+
+.titleShadow(@col) {
+    @shadCol: darken(@col, 40%);
+    letter-spacing: 3px;
+    color: @col;
+    @x: 5px;
+    @y: 4px;
+    text-shadow: (@x * 0.25) (@y * 0.25) @shadCol,
+                 (@x * 0.5)  (@y * 0.5)  @shadCol,
+                 (@x * 0.75) (@y * 0.75) @shadCol,
+                 (@x * 1)    (@y * 1)    @shadCol;
+}
+.title {
+    @col: lighten(@purple, 15%);
+    @shadCol: darken(@col, 40%);
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 40px;
+
+    > span:nth-child(1) { .titleShadow(@orange); }
+    > span:nth-child(2) { .titleShadow(average(@orange, @red)); }
+    > span:nth-child(3) { .titleShadow(@red); }
+    .capital {
+        font-size: 50px;
     }
 }
 
 #welcome {
-    @w: 400px;
+    @w: 500px;
     @h: 300px;
     position: absolute;
     width: @w;
@@ -109,11 +107,11 @@ html, body {
         line-height: 1.2em;
     }
     >h1 {
-        font-family: 'Lobster Two', cursive;
-        font-size: 38px;
+        margin-top: 5px;
     }
     > h2 {
-        font-size: 20px;
+        font-family: 'Lobster Two', cursive;
+        font-size: 32px;
     }
     > p {
         margin: 15px 0;
