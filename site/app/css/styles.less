@@ -34,7 +34,7 @@ html, body {
     transition: transform 2s @signCurve;
 }
 
-#title-card {
+.title-card {
     @w: 500px;
     @h: 100px;
     @light: darken(#B10DC9, 0%);
@@ -46,8 +46,48 @@ html, body {
     height: @h;
     margin-left: -(@w / 2);
     text-align: center;
-    opacity: 0;
-    transition: opacity 0.75s;
+
+    &#title-card-orig {
+        transform: translate(0, -75px);
+        opacity: 0;
+        transition: transform 0.75s, opacity 0.75s;
+        &.show {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+    }
+
+    &#title-card-real {
+        opacity: 0;
+        &.show {
+            opacity: 1;
+            @easing: cubic-bezier(0.57, 0.14, 0.27, 1.55);
+            @dur: 1s;
+
+            h1 > span {
+                display: inline-block;
+
+                @startingDelay: 0.75s;
+
+                &:nth-child(1) {
+                    animation: title-reveal-1 @dur @easing 1;
+                    animation-delay: @startingDelay + (0 * (@dur * 0.75));
+                    animation-fill-mode: backwards;
+                }
+                &:nth-child(2) {
+                    animation: title-reveal-2 @dur @easing 1;
+                    animation-delay: @startingDelay + (1 * (@dur * 0.75));
+                    animation-fill-mode: backwards;
+                }
+                &:nth-child(3) {
+                    animation: title-reveal-3 @dur @easing 1;
+                    animation-delay: @startingDelay + (2 * (@dur * 0.75));
+                    animation-fill-mode: backwards;
+                }
+            }
+
+        }
+    }
 
     &.show {
         opacity: 1;
@@ -413,6 +453,22 @@ html, body {
         opacity: 0;
         transform: translate(10px, 150px) rotate(-500deg);
     }
+}
+
+@xDiff: 40px;
+@yDiff: -75px;
+@scale: 0.25;
+@keyframes title-reveal-1 {
+    0%   { transform: translate(-@xDiff, @yDiff) scale(@scale); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+@keyframes title-reveal-2 {
+    0%   { transform: translate(0px, @yDiff) scale(@scale); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+@keyframes title-reveal-3 {
+    0%   { transform: translate(@xDiff, @yDiff) scale(@scale); }
+    100% { transform: translate(0px, 0px) scale(1); }
 }
 
 @shakeAmount: 1.5deg;

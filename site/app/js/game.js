@@ -45,7 +45,8 @@ const game = {
             elements.caption.style.opacity = '1';
             jq.changeText(elements.answer, questions.current.answer);
             if (questions.more.length === 0) {
-                jq.changeText(elements.titleCard, '<h1 class="title"><span><span class="capital">P</span>op</span> <span>the</span> <span><span class="capital">Q</span>uestion!</span></h1>');
+                jq.removeClass(elements.titleCard.orig, 'show');
+                jq.addClass(elements.titleCard.real, 'show');
             }
         } else {
             elements.caption.style.opacity = '0';

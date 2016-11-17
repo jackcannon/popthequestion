@@ -5,7 +5,10 @@ export default {
     answer: document.getElementById('answer'),
     welcome: document.getElementById('welcome'),
     startBtn: document.getElementById('start-btn'),
-    titleCard: document.getElementById('title-card'),
+    titleCard: {
+        orig: document.getElementById('title-card-orig'),
+        real: document.getElementById('title-card-real'),
+    },
     celeImgs: [
         document.getElementById('cele-gorilla'),
         document.getElementById('cele-diddy'),
