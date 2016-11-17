@@ -19,7 +19,7 @@ export default {
         {
             answer: 'Katniss Everdeen',
             questions: [
-                'Which fictitious character won the Hunger Games?',
+                'Who won the Hunger Games?',
                 'Who was Harry Potter’s best friend?',
                 'Who sang ‘Gangnam Style’?',
                 'Who painted the ‘Mona Lisa’?',
@@ -33,11 +33,11 @@ export default {
         {
             answer: 'Arsenal',
             questions: [
-                'Who play their home games at the Emirates Stadium?',
+                'Who play at the Emirates Stadium?',
                 'Who are the domestic champions of France?',
-                'Who won Sport Personality ‘Team of the Year’ 2010?',
+                'Which team\'s mascot is an eagle?',
                 'Where would one store their boating oars?',
-                'Where can you buy the 13 most expensive rabbits?',
+                'Where are<br/>the 13 most expensive rabbits?',
                 'What is the ‘Jewel of California Bay’?',
                 'What is the 13th month called?',
                 'Who founded Facebook?'
@@ -58,9 +58,9 @@ export default {
         {
             answer: 'Canterbury Cathedral',
             questions: [
-                'Where did we both graduate from university?',
+                'Where did<br/>we both graduate from university?',
                 'Where did Andy Murray win the US Open?',
-                'Where is the world’s largest swimming pool?',
+                'Where is<br/>the world’s largest swimming pool?',
                 'Where are the Crown Jewels kept?',
                 'Where did Charles Darwin write Origin of Species?',
                 'Which UK Building is taller than Everest?'
