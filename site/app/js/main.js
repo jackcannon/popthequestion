@@ -2,7 +2,7 @@ import game from './game.js';
 import elements from './elements.js';
 import { jq } from './utils.js';
 
-game.placeBalloons();
+game.addNewBalloons(10);
 elements.startBtn.addEventListener('click', () => {
     game.nextQuestion();
     elements.welcome.style.display = 'none';
