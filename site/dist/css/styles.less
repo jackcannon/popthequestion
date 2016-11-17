@@ -34,56 +34,94 @@ html, body {
     transition: transform 2s @signCurve;
 }
 
-#title-card {
-    @w: 200px;
+.title-card {
+    @w: 500px;
     @h: 100px;
     @light: darken(#B10DC9, 0%);
     @dark: darken(#B10DC9, 10%);
     position: absolute;
-    top: -140px;
+    top: 0px;
     left: 50%;
     width: @w;
     height: @h;
     margin-left: -(@w / 2);
-    background-image: linear-gradient(45deg, @light 25%, @dark 25%, @dark 50%, @light 50%, @light 75%, @dark 75%, @dark 0);
-    background-position: auto auto;
-
-    background-origin: padding-box;
-    background-clip: border-box;
-    background-size: 50px 50px;
-    // border: 2px solid rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-    box-shadow: 5px 3px 15px 8px rgba(0, 0, 0, 0.75);
-    cursor: default;
-    font-size: 35px;
-    font-weight: bold;
-    line-height: 40px;
     text-align: center;
-    padding: 7px 3px 0 3px;
-    color: rgba(255, 255, 255, 0.8);
-    transform-origin: 3px 100%;
-    transform: rotate(6deg);
-    z-index: 1000;
-    transition: top 2s @signCurve, transform 2s @signCurve;
 
-    // &:before {
-    //     .title-pseudo();
-    //     left: 0;
-    // }
-    // &:after {
-    //     .title-pseudo();
-    //     right: 0;
-    // }
+    &#title-card-orig {
+        transform: translate(0, -75px);
+        opacity: 0;
+        transition: transform 0.75s, opacity 0.75s;
+        &.show {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+    }
 
-    &.shown {
-        top: 30px;
-        transform: rotate(-4deg);
-        // &:before, &:after { transform: rotate(4deg); }
+    &#title-card-real {
+        opacity: 0;
+        &.show {
+            opacity: 1;
+            @easing: cubic-bezier(0.57, 0.14, 0.27, 1.55);
+            @dur: 1s;
+
+            h1 > span {
+                display: inline-block;
+
+                @startingDelay: 0.75s;
+
+                &:nth-child(1) {
+                    animation: title-reveal-1 @dur @easing 1;
+                    animation-delay: @startingDelay + (0 * (@dur * 0.75));
+                    animation-fill-mode: backwards;
+                }
+                &:nth-child(2) {
+                    animation: title-reveal-2 @dur @easing 1;
+                    animation-delay: @startingDelay + (1 * (@dur * 0.75));
+                    animation-fill-mode: backwards;
+                }
+                &:nth-child(3) {
+                    animation: title-reveal-3 @dur @easing 1;
+                    animation-delay: @startingDelay + (2 * (@dur * 0.75));
+                    animation-fill-mode: backwards;
+                }
+            }
+
+        }
+    }
+
+    &.show {
+        opacity: 1;
+    }
+}
+
+
+.titleShadow(@col) {
+    @shadCol: darken(@col, 40%);
+    letter-spacing: 3px;
+    color: @col;
+    @x: 5px;
+    @y: 4px;
+    text-shadow: (@x * 0.25) (@y * 0.25) @shadCol,
+                 (@x * 0.5)  (@y * 0.5)  @shadCol,
+                 (@x * 0.75) (@y * 0.75) @shadCol,
+                 (@x * 1)    (@y * 1)    @shadCol;
+}
+.title {
+    @col: lighten(@purple, 15%);
+    @shadCol: darken(@col, 40%);
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 40px;
+
+    > span:nth-child(1) { .titleShadow(@orange); }
+    > span:nth-child(2) { .titleShadow(average(@orange, @red)); }
+    > span:nth-child(3) { .titleShadow(@red); }
+    .capital {
+        font-size: 50px;
     }
 }
 
 #welcome {
-    @w: 400px;
+    @w: 500px;
     @h: 300px;
     position: absolute;
     width: @w;
@@ -109,11 +147,11 @@ html, body {
         line-height: 1.2em;
     }
     >h1 {
-        font-family: 'Lobster Two', cursive;
-        font-size: 38px;
+        margin-top: 5px;
     }
     > h2 {
-        font-size: 20px;
+        font-family: 'Lobster Two', cursive;
+        font-size: 32px;
     }
     > p {
         margin: 15px 0;
@@ -231,7 +269,7 @@ html, body {
     &.balloon-orange { .color(@orange); }
 
     &.popped  { display: none; }
-    &.correct { z-index: 300; }
+    &.correct, &.finale { z-index: 300; }
 
     &:before {
         content: '';
@@ -290,6 +328,70 @@ html, body {
     font-size: 42px;
     cursor: default;
     transition: opacity 0.5s;
+}
+
+.celebration-img {
+    border-radius: 20px;
+    position: absolute;
+    opacity: 0;
+    top: 150%;
+    left: 50%;
+    transition: opacity 0.75s, top 1.5s;
+
+    &.show {
+        opacity: 1;
+    }
+
+    .offset(@w, @h, @scale) {
+        width: @w * @scale * 1px;
+        height: @h * @scale * 1px;
+        margin-top: -((@h * @scale) / 2) * 1px;
+        margin-left: -((@w * @scale) / 2) * 1px;
+    }
+
+    @min: 20%;
+    @max: 80%;
+
+    &#cele-bear {
+        .offset(480, 270, 1);
+        animation: cele-shake-1 linear 0.4s infinite;
+        &.show {
+            top: 50%;
+            left: 50%;
+        }
+    }
+    &#cele-diddy {
+        .offset(371, 209, 0.9);
+        animation: cele-shake-2 linear 0.45s infinite;
+        &.show {
+            top: @min;
+            left: @min;
+        }
+    }
+    &#cele-giroud {
+        .offset(500, 240, 0.7);
+        animation: cele-shake-3 linear 0.5s infinite;
+        &.show {
+            top: @min;
+            left: @max;
+        }
+    }
+    &#cele-elmo {
+        .offset(480, 270, 0.7);
+        animation: cele-shake-3 linear 0.55s infinite;
+        &.show {
+            top: @max;
+            left: @min;
+        }
+    }
+    &#cele-gorilla {
+        .offset(282, 176, 1);
+        animation: cele-shake-2 linear 0.6s infinite;
+        &.show {
+            top: @max;
+            left: @max;
+        }
+    }
 }
 
 @keyframes wobble {
@@ -351,4 +453,34 @@ html, body {
         opacity: 0;
         transform: translate(10px, 150px) rotate(-500deg);
     }
+}
+
+@xDiff: 40px;
+@yDiff: -75px;
+@scale: 0.25;
+@keyframes title-reveal-1 {
+    0%   { transform: translate(-@xDiff, @yDiff) scale(@scale); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+@keyframes title-reveal-2 {
+    0%   { transform: translate(0px, @yDiff) scale(@scale); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+@keyframes title-reveal-3 {
+    0%   { transform: translate(@xDiff, @yDiff) scale(@scale); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@shakeAmount: 1.5deg;
+@keyframes cele-shake-1 {
+    0%, 100% { transform: rotate(0deg - @shakeAmount); }
+    50%      { transform: rotate(0deg + @shakeAmount); }
+}
+@keyframes cele-shake-2 {
+    0%, 100% { transform: rotate(5deg - @shakeAmount); }
+    50%      { transform: rotate(5deg + @shakeAmount); }
+}
+@keyframes cele-shake-3 {
+    0%, 100% { transform: rotate(-5deg - @shakeAmount); }
+    50%      { transform: rotate(-5deg + @shakeAmount); }
 }

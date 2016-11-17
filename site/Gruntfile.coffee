@@ -45,7 +45,7 @@ module.exports = (grunt) ->
 					'<%= yeoman.app %>/css/*.less'
 					'<%= yeoman.app %>/js/*.js'
 					'.tmp/js/{,*/}*.js'
-					'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+					'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg,ico}'
 				]
 		connect:
 			options:
@@ -173,7 +173,7 @@ module.exports = (grunt) ->
 		imagemin: dist: files: [ {
 			expand: true
 			cwd: '<%= yeoman.app %>/images'
-			src: '{,*/}*.{png,jpg,jpeg,gif}'
+			src: '{,*/}*.{png,jpg,jpeg,gif,ico}'
 			dest: '<%= yeoman.dist %>/images'
 		} ]
 		svgmin: dist: files: [ {
