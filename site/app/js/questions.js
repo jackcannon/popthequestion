@@ -103,7 +103,7 @@ export default {
         {
             answer: 'YES!',
             questions: [
-                'Manny, will you marry me?'
+                'Manny,<br/>will you<br/>marry me?'
             ]
         }
     ],
