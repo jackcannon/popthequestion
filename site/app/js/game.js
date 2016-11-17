@@ -45,6 +45,7 @@ const game = {
             elements.caption.style.opacity = '1';
             jq.changeText(elements.answer, questions.current.answer);
             if (questions.more.length === 0) {
+                document.title = 'Pop the Question';
                 jq.removeClass(elements.titleCard.orig, 'show');
                 jq.addClass(elements.titleCard.real, 'show');
             }
