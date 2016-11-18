@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     font-family: 'Poppins', sans-serif;
     background-color: #111111;
+    cursor: url('../images/pushpin.png'), auto;
 }
 
 * {
@@ -59,6 +60,7 @@ html, body {
 
     &#title-card-real {
         opacity: 0;
+        z-index: 500;
         &.show {
             opacity: 1;
             @easing: cubic-bezier(0.57, 0.14, 0.27, 1.55);
@@ -141,6 +143,8 @@ html, body {
                 10px 10px 0 0 darken(@purple, 35%);
     opacity: 0.95;
     z-index: 500;
+
+    cursor: default;
 
     > h1, > h2, > p {
         margin: 0;
@@ -244,7 +248,7 @@ html, body {
     text-align: center;
     font-weight: bold;
     user-select: none;
-    cursor: pointer;
+    cursor: url('../images/pushpin.png'), pointer;
     animation: wobble 3s infinite ease-in-out, rise 5s infinite linear;
 
     > span {
