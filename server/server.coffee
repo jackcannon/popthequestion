@@ -18,6 +18,9 @@ app.get '/ping', (req, res) ->
 app.get '/', (req, res) ->
 	res.sendFile path.resolve __dirname + folder + '/index.html'
 
+app.get '/favicon.ico', (req, res) ->
+	res.sendFile path.resolve __dirname + folder + '/images/favicon.ico'
+
 app.get '/*', (req, res) ->
 	res.sendFile path.resolve __dirname + folder + '/index.html'
 
