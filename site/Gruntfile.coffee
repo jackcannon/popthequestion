@@ -170,12 +170,6 @@ module.exports = (grunt) ->
 				'<%= yeoman.dist %>'
 				'<%= yeoman.dist %>/images'
 			]
-		imagemin: dist: files: [ {
-			expand: true
-			cwd: '<%= yeoman.app %>/images'
-			src: '{,*/}*.{png,jpg,jpeg,gif,ico}'
-			dest: '<%= yeoman.dist %>/images'
-		} ]
 		svgmin: dist: files: [ {
 			expand: true
 			cwd: '<%= yeoman.app %>/images'
@@ -208,7 +202,7 @@ module.exports = (grunt) ->
 						'*.{ico,png,txt}'
 						'.htaccess'
 						'*.html'
-						'images/{,*/}*.{webp}'
+						'images/{,*/}*.*'
 						'fonts/{,*/}*.*'
 						'css/{,*/}*.*'
 					]
@@ -261,7 +255,6 @@ module.exports = (grunt) ->
 			dist: [
 				'browserify'
 				'less'
-				'imagemin'
 				'svgmin'
 			]
 		karma: unit:
